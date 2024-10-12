@@ -1,4 +1,4 @@
-# New Map Template
+# GISEC Fall 2024 Web Mapping
 
 ## Getting Started
 
