@@ -9,11 +9,15 @@ mapboxgl.accessToken = "pk.eyJ1IjoiY3ByZW5kZXJnYXN0IiwiYSI6ImNtMjZhYjBicjA3czQya
 const mapContainer = ref();
 
 onMounted(() => {
-  new mapboxgl.Map({
+  const map = new mapboxgl.Map({
     "container": mapContainer.value,
     "style": style
   });
+
+   // Add zoom and rotation controls to the map.
+   map.addControl(new mapboxgl.NavigationControl());
 });
+
 </script>
 
 <template>
