@@ -11,6 +11,18 @@
     "projection": {
         "name": "globe"
     },
-    "sources": {},
-    "layers": []
+    "sources": {
+        "sites": {
+            "type": "geojson",
+            "data": {
+                "type": "FeatureCollection",
+                "features": []
+            }
+        }
+    },
+    "layers": [{
+        "id": "sites-circles",
+        "type": "circle",
+        "source": "sites"
+    }]
 }

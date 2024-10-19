@@ -3,6 +3,7 @@ import { onMounted, ref } from "vue";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import style from "./mapbox/style.json";
+import sites from "./data/sites.json";
 
 mapboxgl.accessToken = "pk.eyJ1IjoiY3ByZW5kZXJnYXN0IiwiYSI6ImNtMjZhYjBicjA3czQyam9rMm83N3l5cmYifQ.vL3eE67Ua2dk5belzAYurQ";
 
@@ -16,6 +17,16 @@ onMounted(() => {
 
    // Add zoom and rotation controls to the map.
    map.addControl(new mapboxgl.NavigationControl());
+   
+   // Add load event listener.
+   map.on("load", () => {
+    
+    // Add sites data after load.
+    const sitesSource = map.getSource("sites");
+    sitesSource.addData(sites);
+   });
+
+
 });
 
 </script>
