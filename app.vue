@@ -20,10 +20,10 @@ onMounted(() => {
    
    // Add load event listener.
    map.on("load", () => {
-    
+
     // Add sites data after load.
     const sitesSource = map.getSource("sites");
-    sitesSource.addData(sites);
+    sitesSource.setData(sites);
    });
 
 
