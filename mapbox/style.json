@@ -18,11 +18,61 @@
                 "type": "FeatureCollection",
                 "features": []
             }
+        },
+        "neighborhoods": {
+            "type": "geojson",
+            "data": {
+                "type": "FeatureCollection",
+                "features": []
+            }
         }
     },
-    "layers": [{
-        "id": "sites-circles",
-        "type": "circle",
-        "source": "sites"
-    }]
+    "layers": [
+        {
+            "id": "neighborhoods-fill",
+            "type": "fill-extrusion",
+            "source": "neighborhoods",
+            "paint": {
+                "fill-extrusion-color": [
+                    "step",
+                    [
+                        "get",
+                        "count"
+                    ],
+                    "rgb(254,237,222)",
+                    50, "rgb(253,208,162)",
+                    100, "rgb(253,174,107)",
+                    300, "rgb(253,141,60)",
+                    600, "rgb(230,85,13)",
+                    1000, "rgb(166,54,3)"
+                ],
+                "fill-extrusion-opacity": 0.3,
+                "fill-extrusion-height": [
+                    "*",
+                    [
+                        "get", 
+                        "count"
+                    ],
+                    5
+                ]
+            }
+        },
+        {
+            "id": "neighborhoods-outline",
+            "type": "line",
+            "source": "neighborhoods",
+            "paint": {
+                "line-width": 3
+            }
+        },
+        {
+            "id": "sites-circles",
+            "type": "circle",
+            "source": "sites",
+            "paint": {
+                "circle-color": "rgb(219, 211, 60)",
+                "circle-opacity": 0.3,
+                "circle-radius": 6
+            }
+        }]
 }
