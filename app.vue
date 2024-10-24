@@ -3,9 +3,8 @@ import { onMounted, ref } from "vue";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import style from "./mapbox/style.json";
-import sites from "./data/sites.json";
-import neighborhoods from "./data/neighborhoods-with-count.json";
-
+import atlantic_data from "./data/atlantic/2023/2023_atlantic_summary.json";
+import pacific_data from "./data/pacific/2023/2023_pacific_summary.json";
 
 // Get bounding box for sites and log to console.
 // import { bbox } from "@turf/turf";
@@ -21,12 +20,6 @@ onMounted(() => {
   const map = new mapboxgl.Map({
     "container": mapContainer.value,
     "style": style,
-    "bounds": [
-      -118.6,
-      33.8,
-      -118.1,
-      34.3
-    ],
     "fitBoundsOptions": {
       "padding": 25,
       "pitch": 45
@@ -39,13 +32,14 @@ onMounted(() => {
    // Add load event listener.
    map.on("load", () => {
 
-    // Add sites data after load.
-    const sitesSource = map.getSource("sites");
-    sitesSource.setData(sites);
+    // Add atlantic track data after load.
+    const atlanticSource = map.getSource("atlantic");
+    atlanticSource.setData(atlantic_data);
 
-    // Add neighborhoods data after load.
-    const neighborhoodsSource = map.getSource("neighborhoods");
-    neighborhoodsSource.setData(neighborhoods);
+    // Add pacific track data after load.
+    const pacificSource = map.getSource("pacific");
+    pacificSource.setData(pacific_data);
+
    });
 
 

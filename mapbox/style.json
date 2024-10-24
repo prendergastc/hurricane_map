@@ -12,14 +12,14 @@
         "name": "globe"
     },
     "sources": {
-        "sites": {
+        "atlantic": {
             "type": "geojson",
             "data": {
                 "type": "FeatureCollection",
                 "features": []
             }
         },
-        "neighborhoods": {
+        "pacific": {
             "type": "geojson",
             "data": {
                 "type": "FeatureCollection",
@@ -29,50 +29,22 @@
     },
     "layers": [
         {
-            "id": "neighborhoods-fill",
-            "type": "fill-extrusion",
-            "source": "neighborhoods",
-            "paint": {
-                "fill-extrusion-color": [
-                    "step",
-                    [
-                        "get",
-                        "count"
-                    ],
-                    "rgb(254,237,222)",
-                    50, "rgb(253,208,162)",
-                    100, "rgb(253,174,107)",
-                    300, "rgb(253,141,60)",
-                    600, "rgb(230,85,13)",
-                    1000, "rgb(166,54,3)"
-                ],
-                "fill-extrusion-opacity": 0.3,
-                "fill-extrusion-height": [
-                    "*",
-                    [
-                        "get", 
-                        "count"
-                    ],
-                    5
-                ]
-            }
-        },
-        {
-            "id": "neighborhoods-outline",
+            "id": "atlantic",
             "type": "line",
-            "source": "neighborhoods",
+            "source": "atlantic",
             "paint": {
-                "line-width": 3
+                "line-color": "rgb(255,50,50)",
+                "line-width": 4
             }
         },
         {
-            "id": "sites-circles",
-            "type": "circle",
-            "source": "sites",
+            "id": "pacific",
+            "type": "line",
+            "source": "pacific",
             "paint": {
-                "circle-color": "rgb(219, 211, 60)",
-                "circle-opacity": 0.3,
-                "circle-radius": 6
-            }
-        }]
+                "line-color": "rgb(50,255,50)",
+                "line-width": 4
+            }  
+        }
+    ]
 }
